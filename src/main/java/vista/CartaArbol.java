@@ -5,7 +5,7 @@
 package vista;
 
 import controlador.ControladorAudios;
-import controlador.ControladorCartaArbol;
+import controlador.ControladorCartaArbolPrueba;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -20,13 +20,13 @@ public class CartaArbol extends javax.swing.JFrame {
      * Creates new form Arbol
      */
     ControladorAudios objControladorAudios;
-    ControladorCartaArbol objControladorCartaArbol;
+    ControladorCartaArbolPrueba objControladorCartaArbol;
 
     public CartaArbol() {
         initComponents();
         this.setLocationRelativeTo(null);
         objControladorAudios = new ControladorAudios();
-        objControladorCartaArbol = new ControladorCartaArbol(this);
+        objControladorCartaArbol = new ControladorCartaArbolPrueba(this);
         objControladorCartaArbol.inicializar();
     }
 

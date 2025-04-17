@@ -3,54 +3,32 @@ package controlador;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
-import java.awt.dnd.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.awt.dnd.DnDConstants;
+import java.awt.dnd.DragGestureEvent;
+import java.awt.dnd.DragGestureListener;
+import java.awt.dnd.DragSource;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDragEvent;
+import java.awt.dnd.DropTargetDropEvent;
+import java.awt.dnd.DropTargetEvent;
+import java.awt.dnd.DropTargetListener;
 import java.util.List;
 import javax.swing.JOptionPane;
-import modelo.ConexionBD;
-import modelo.ModeloGuardaPalabras;
-import modelo.ModeloPalabra;
 import modelo.Palabra;
 import vista.CartaBicicleta;
 import vista.MenuJuego;
 
-public class ControladorCartaBicicleta implements ActionListener {
+public class ControladorCartaBicicletaPrueba extends ControladorClaseDragDrop {
 
-    private ModeloPalabra modeloPalabra;
-    private ModeloGuardaPalabras modeloGuardaPalabras;
-    private Connection conexion;
-    private ControladorAudios objAudio;
     private CartaBicicleta objCartaBicicleta;
 
-    public ControladorCartaBicicleta(CartaBicicleta objCartaBicicleta) {
+    public ControladorCartaBicicletaPrueba(CartaBicicleta objCartaBicicleta) {
         this.objCartaBicicleta = objCartaBicicleta;
-        this.objCartaBicicleta.jButton2.addActionListener(this);
-        try {
-            this.conexion = ConexionBD.getInstancia().getConexion();
-            modeloPalabra = new ModeloPalabra();
-            modeloGuardaPalabras = new ModeloGuardaPalabras(modeloPalabra);
-            cargarPalabraDelNivel();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        arrastrarSoltar();
-        objAudio = new ControladorAudios();
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.objCartaBicicleta.jButton2) {
-            MenuJuego objMenuJuego = new MenuJuego();
-            objMenuJuego.setVisible(true);
-            this.objCartaBicicleta.dispose();
-        }
-    }
-
-    private void cargarPalabraDelNivel() {
-//        Ahora getPalabras() Devuelve una lista de objetos de palabra
+    protected void cargarPalabraDelNivel() {
+        //        Ahora getPalabras() Devuelve una lista de objetos de palabra
         List<Palabra> lista = modeloGuardaPalabras.getPalabras();
         if (!lista.isEmpty()) {
             Palabra palabraActual = lista.get(12);
@@ -72,10 +50,11 @@ public class ControladorCartaBicicleta implements ActionListener {
         } else {
             JOptionPane.showMessageDialog(null, "No se encontraron palabras en la base de datos.");
         }
+
     }
 
-    // Configuración de Drag & Drop
-    private void arrastrarSoltar() {
+    @Override
+    protected void arrastrarSoltar() {
         final String textoOriginal = objCartaBicicleta.jLabel6.getText();
         DragSource ds = new DragSource();
 
@@ -143,5 +122,21 @@ public class ControladorCartaBicicleta implements ActionListener {
                 }
             }
         });
+
     }
+
+    @Override
+    protected void manejarEvento(Object boton) {
+        if (boton == this.objCartaBicicleta.jButton2) {
+            MenuJuego objMenuJuego = new MenuJuego();
+            objMenuJuego.setVisible(true);
+            this.objCartaBicicleta.dispose();
+        }
+    }
+
+    @Override
+    protected void agregarAccionadorEventos() {
+        this.objCartaBicicleta.jButton2.addActionListener(this);
+    }
+
 }
