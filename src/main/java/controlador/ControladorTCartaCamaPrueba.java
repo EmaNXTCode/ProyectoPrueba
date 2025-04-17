@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 
 import java.util.List;
@@ -39,7 +35,7 @@ public class ControladorTCartaCamaPrueba extends ControladorClaseBase {
     }
 
     @Override
-    protected void agregarAccionadorEventos() {        
+    protected void agregarAccionadorEventos() {
         this.objTCartaCama.jButton1.addMouseListener(this);
         this.objTCartaCama.jButton2.addMouseListener(this);
         this.objTCartaCama.jButton3.addMouseListener(this);
@@ -79,5 +75,4 @@ public class ControladorTCartaCamaPrueba extends ControladorClaseBase {
             this.objTCartaCama.dispose();
         }
     }
-
 }
