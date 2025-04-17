@@ -5,7 +5,7 @@
 package vista;
 
 import controlador.ControladorAudios;
-import controlador.ControladorCartaJirafa;
+import controlador.ControladorCartaJirafaPrueba;
 
 /**
  *
@@ -13,13 +13,14 @@ import controlador.ControladorCartaJirafa;
  */
 public class CartaJirafa extends javax.swing.JFrame {
 
-    ControladorCartaJirafa objControladorCartaJirafa;
+    ControladorCartaJirafaPrueba objControladorCartaJirafaPrueba;
     ControladorAudios objControladorAudios;
     
     public CartaJirafa() {
         initComponents();
         this.setLocationRelativeTo(null);
-        objControladorCartaJirafa = new ControladorCartaJirafa(this);
+        objControladorCartaJirafaPrueba= new ControladorCartaJirafaPrueba(this);
+//        objControladorCartaJirafaPrueba.inicializar();
         objControladorAudios = new ControladorAudios();
     }
 

@@ -5,7 +5,7 @@
 package vista;
 
 import controlador.ControladorAudios;
-import controlador.ControladorCartaCasa;
+import controlador.ControladorCartaCasaPrueba;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -19,14 +19,16 @@ public class CartaCasa extends javax.swing.JFrame {
     /**
      * Creates new form Carta3
      */
-    ControladorCartaCasa objControladorCarta3;
     ControladorAudios objControladorAudios;
+    ControladorCartaCasaPrueba objControladorCartaCasaPrueba;
 
     public CartaCasa() {
         initComponents();
         this.setLocationRelativeTo(null);
-        objControladorCarta3 = new ControladorCartaCasa(this);
         objControladorAudios = new ControladorAudios();
+        objControladorCartaCasaPrueba = new ControladorCartaCasaPrueba(this);
+        objControladorCartaCasaPrueba.inicializar();
+
     }
 
     /**
@@ -127,7 +129,7 @@ public class CartaCasa extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MousePressed
 
     private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
-       objControladorAudios.reproducirAudio("pa");
+        objControladorAudios.reproducirAudio("pa");
     }//GEN-LAST:event_jLabel4MousePressed
 
     /**
