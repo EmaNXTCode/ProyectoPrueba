@@ -19,14 +19,15 @@ public class CartaArbol extends javax.swing.JFrame {
     /**
      * Creates new form Arbol
      */
-    ControladorCartaArbol objControladorCartaArbol;
     ControladorAudios objControladorAudios;
-    
+    ControladorCartaArbol objControladorCartaArbol;
+
     public CartaArbol() {
         initComponents();
         this.setLocationRelativeTo(null);
-        objControladorCartaArbol = new ControladorCartaArbol(this);
         objControladorAudios = new ControladorAudios();
+        objControladorCartaArbol = new ControladorCartaArbol(this);
+        objControladorCartaArbol.inicializar();
     }
 
     /**

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 
 import java.awt.datatransfer.DataFlavor;
@@ -20,7 +16,6 @@ import modelo.ModeloPalabra;
 import modelo.Palabra;
 import vista.CartaBicicleta;
 import vista.MenuJuego;
-
 
 public class ControladorCartaBicicleta implements ActionListener {
 
@@ -136,7 +131,6 @@ public class ControladorCartaBicicleta implements ActionListener {
                     Transferable transferable = dtde.getTransferable();
                     String droppedText = (String) transferable.getTransferData(DataFlavor.stringFlavor);
                     objCartaBicicleta.jLabel6.setText(droppedText);
-
                     if ((objCartaBicicleta.jLabel5.getText() + droppedText + objCartaBicicleta.jLabel7.getText()).equals("BICICLETA")) {
                         objAudio.reproducirAudio("bicicleta");
                         JOptionPane.showMessageDialog(null, "¡Correcto! La palabra es BICICLETA");
@@ -148,8 +142,6 @@ public class ControladorCartaBicicleta implements ActionListener {
                     ex.printStackTrace();
                 }
             }
-        }
-        );
+        });
     }
 }
-

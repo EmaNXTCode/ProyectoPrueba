@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 
 import java.awt.datatransfer.DataFlavor;
@@ -20,7 +16,6 @@ import modelo.ModeloPalabra;
 import modelo.Palabra;
 import vista.CartaCarro;
 import vista.MenuJuego;
-
 
 public class ControladorCartaCarro implements ActionListener {
 
@@ -77,7 +72,7 @@ public class ControladorCartaCarro implements ActionListener {
         }
     }
 
-    // Configuración de Drag & Drop
+    // Configuración de Drag & Drop    
     private void arrastrarSoltar() {
         final String textoOriginal = objCartaCarro.jLabel5.getText();
         DragSource ds = new DragSource();
@@ -146,8 +141,6 @@ public class ControladorCartaCarro implements ActionListener {
                     ex.printStackTrace();
                 }
             }
-        }
-        );
+        });
     }
 }
-
