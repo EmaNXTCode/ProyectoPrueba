@@ -15,31 +15,32 @@ import java.awt.dnd.DropTargetListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Palabra;
-import vista.CartaArbol;
+import vista.CartaMango;
 import vista.MenuJuego;
 
-public class ControladorCartaArbolPrueba extends ControladorClaseDragDrop {
+public class ControladorCartaMango extends ControladorClaseDragDrop {
 
-    private CartaArbol objCartaArbol;
+    private CartaMango objCartaMango;
 
-    public ControladorCartaArbolPrueba(CartaArbol objCartaArbol) {
-        this.objCartaArbol = objCartaArbol;
+    public ControladorCartaMango(CartaMango objCartaMango) {
+        this.objCartaMango = objCartaMango;
     }
 
     @Override
     protected void cargarPalabraDelNivel() {
+        // getPalabras() devuelve una lista de objetos Palabra
         List<Palabra> lista = modeloGuardaPalabras.getPalabras();
         if (!lista.isEmpty()) {
-            Palabra palabraActual = lista.get(4); // Cambia a la palabra que necesitas
+            Palabra palabraActual = lista.get(5);
             String palabraCompleta = palabraActual.getPalabra();
-
             if (palabraCompleta.length() >= 2) {
-                String silabaCorrecta = palabraCompleta.substring(2, 5);
-                String complemento = palabraCompleta.substring(0, 2);
-                objCartaArbol.jLabel2.setText(silabaCorrecta);
-                objCartaArbol.jLabel5.setText(complemento);
-                objCartaArbol.jLabel3.setText("NO");
-                objCartaArbol.jLabel4.setText("QUE");
+                String silabaCorrecta = palabraCompleta.substring(0, 3);
+                String complemento = palabraCompleta.substring(3, 5);
+                objCartaMango.jLabel3.setText(silabaCorrecta);
+                objCartaMango.jLabel6.setText(complemento);
+                // Sílabas falsas en otros JLabel
+                objCartaMango.jLabel2.setText("KO");
+                objCartaMango.jLabel4.setText("TU");
             }
         } else {
             JOptionPane.showMessageDialog(null, "No se encontraron palabras en la base de datos.");
@@ -48,36 +49,38 @@ public class ControladorCartaArbolPrueba extends ControladorClaseDragDrop {
 
     @Override
     protected void arrastrarSoltar() {
-        final String textoOriginal = objCartaArbol.jLabel6.getText();
+        final String textoOriginal = objCartaMango.jLabel5.getText();
         DragSource ds = new DragSource();
 
-        // Configurar arrastre para cada JLabel
-        ds.createDefaultDragGestureRecognizer(objCartaArbol.jLabel2, DnDConstants.ACTION_MOVE, new DragGestureListener() {
+        // Configurar arrastre para jLabel2
+        ds.createDefaultDragGestureRecognizer(objCartaMango.jLabel2, DnDConstants.ACTION_MOVE, new DragGestureListener() {
             @Override
             public void dragGestureRecognized(DragGestureEvent dge) {
-                Transferable objTransferible = new StringSelection(objCartaArbol.jLabel2.getText());
+                Transferable objTransferible = new StringSelection(objCartaMango.jLabel2.getText());
                 ds.startDrag(dge, DragSource.DefaultMoveDrop, objTransferible, null);
             }
         });
 
-        ds.createDefaultDragGestureRecognizer(objCartaArbol.jLabel3, DnDConstants.ACTION_MOVE, new DragGestureListener() {
+        // Configurar arrastre para jLabel3
+        ds.createDefaultDragGestureRecognizer(objCartaMango.jLabel3, DnDConstants.ACTION_MOVE, new DragGestureListener() {
             @Override
             public void dragGestureRecognized(DragGestureEvent dge) {
-                Transferable objTransferible = new StringSelection(objCartaArbol.jLabel3.getText());
+                Transferable objTransferible = new StringSelection(objCartaMango.jLabel3.getText());
                 ds.startDrag(dge, DragSource.DefaultMoveDrop, objTransferible, null);
             }
         });
 
-        ds.createDefaultDragGestureRecognizer(objCartaArbol.jLabel4, DnDConstants.ACTION_MOVE, new DragGestureListener() {
+        // Configurar arrastre para jLabel4
+        ds.createDefaultDragGestureRecognizer(objCartaMango.jLabel4, DnDConstants.ACTION_MOVE, new DragGestureListener() {
             @Override
             public void dragGestureRecognized(DragGestureEvent dge) {
-                Transferable objTransferible = new StringSelection(objCartaArbol.jLabel4.getText());
+                Transferable objTransferible = new StringSelection(objCartaMango.jLabel4.getText());
                 ds.startDrag(dge, DragSource.DefaultMoveDrop, objTransferible, null);
             }
         });
 
-        // Configurar la zona de drop
-        new DropTarget(objCartaArbol.jLabel6, new DropTargetListener() {
+        // Configurar jLabel5 como zona de drop
+        new DropTarget(objCartaMango.jLabel5, new DropTargetListener() {
             @Override
             public void dragEnter(DropTargetDragEvent dtde) {
             }
@@ -100,14 +103,13 @@ public class ControladorCartaArbolPrueba extends ControladorClaseDragDrop {
                     dtde.acceptDrop(DnDConstants.ACTION_MOVE);
                     Transferable transferable = dtde.getTransferable();
                     String droppedText = (String) transferable.getTransferData(DataFlavor.stringFlavor);
-                    objCartaArbol.jLabel6.setText(droppedText);
-
-                    if ((objCartaArbol.jLabel5.getText() + droppedText).equals("ARBOL")) {
-                        objAudio.reproducirAudio("arbol");
-                        JOptionPane.showMessageDialog(null, "¡Correcto! La palabra es ARBOL");
+                    objCartaMango.jLabel5.setText(droppedText);
+                    if ((droppedText + objCartaMango.jLabel6.getText()).equals("MANGO")) {
+                        objAudio.reproducirAudio("mango");
+                        JOptionPane.showMessageDialog(null, "¡Correcto! La palabra es MANGO");
                     } else {
                         JOptionPane.showMessageDialog(null, "Incorrecto, intenta de nuevo");
-                        objCartaArbol.jLabel6.setText(textoOriginal);
+                        objCartaMango.jLabel5.setText(textoOriginal);
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -118,15 +120,15 @@ public class ControladorCartaArbolPrueba extends ControladorClaseDragDrop {
 
     @Override
     protected void manejarEvento(Object boton) {
-        if (boton == this.objCartaArbol.jButton1) {
+        if (boton == this.objCartaMango.jButton1) {
             MenuJuego objMenuJuego = new MenuJuego();
             objMenuJuego.setVisible(true);
-            this.objCartaArbol.dispose();
+            this.objCartaMango.dispose();
         }
     }
 
     @Override
     protected void agregarAccionadorEventos() {
-        this.objCartaArbol.jButton1.addActionListener(this);
+        this.objCartaMango.jButton1.addActionListener(this);
     }
 }

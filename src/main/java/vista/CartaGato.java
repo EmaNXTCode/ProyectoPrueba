@@ -5,7 +5,7 @@
 package vista;
 
 import controlador.ControladorAudios;
-import controlador.ControladorCartaGatoPrueba;
+import controlador.ControladorCartaGato;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -19,14 +19,14 @@ public class CartaGato extends javax.swing.JFrame {
     /**
      * Creates new form Carta1
      */
-    ControladorCartaGatoPrueba objControladorCartaGatoPrueba;    
+    ControladorCartaGato objControladorCartaGatoPrueba;    
     ControladorAudios objControladorAudios;
 
     public CartaGato() {
         initComponents();
         this.setLocationRelativeTo(null);
         objControladorAudios = new ControladorAudios();
-        objControladorCartaGatoPrueba = new ControladorCartaGatoPrueba(this);
+        objControladorCartaGatoPrueba = new ControladorCartaGato(this);
         objControladorCartaGatoPrueba.inicializar();        
     }
 

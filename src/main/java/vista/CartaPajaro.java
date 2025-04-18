@@ -5,7 +5,7 @@
 package vista;
 
 import controlador.ControladorAudios;
-import controlador.ControladorCartaPajaroPrueba;
+import controlador.ControladorCartaPajaro;
 
 /**
  *
@@ -17,12 +17,12 @@ public class CartaPajaro extends javax.swing.JFrame {
      * Creates new form Carta
      */
     ControladorAudios objAudio;
-    ControladorCartaPajaroPrueba objControladorCartaPajaroPrueba;
+    ControladorCartaPajaro objControladorCartaPajaroPrueba;
 
     public CartaPajaro() {
         initComponents();
         this.setLocationRelativeTo(null);
-        objControladorCartaPajaroPrueba = new ControladorCartaPajaroPrueba(this);
+        objControladorCartaPajaroPrueba = new ControladorCartaPajaro(this);
         objControladorCartaPajaroPrueba.inicializar();
         objAudio = new ControladorAudios();
     }

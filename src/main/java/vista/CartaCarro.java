@@ -5,7 +5,7 @@
 package vista;
 
 import controlador.ControladorAudios;
-import controlador.ControladorCartaCarroPrueba;
+import controlador.ControladorCartaCarro;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -16,14 +16,14 @@ import javax.sound.sampled.Clip;
  */
 public class CartaCarro extends javax.swing.JFrame {
 
-    ControladorCartaCarroPrueba objControladorCartaCarroPrueba;    
+    ControladorCartaCarro objControladorCartaCarroPrueba;    
     ControladorAudios objControladorAudios;
 
     public CartaCarro() {
         initComponents();
         this.setLocationRelativeTo(null);        
         objControladorAudios = new ControladorAudios();
-        objControladorCartaCarroPrueba = new ControladorCartaCarroPrueba(this);
+        objControladorCartaCarroPrueba = new ControladorCartaCarro(this);
         objControladorCartaCarroPrueba.inicializar();
     }
 

@@ -4,7 +4,7 @@
  */
 package vista;
 
-import controlador.ControladorTCartaPizzaPrueba;
+import controlador.ControladorTCartaPizza;
 
 /**
  *
@@ -12,12 +12,12 @@ import controlador.ControladorTCartaPizzaPrueba;
  */
 public class TCartaPizza extends javax.swing.JFrame {
 
-    ControladorTCartaPizzaPrueba objControladorTCartaPizzaPrueba;
+    ControladorTCartaPizza objControladorTCartaPizzaPrueba;
 
     public TCartaPizza() {
         initComponents();
         this.setLocationRelativeTo(null);
-        objControladorTCartaPizzaPrueba = new ControladorTCartaPizzaPrueba(this);
+        objControladorTCartaPizzaPrueba = new ControladorTCartaPizza(this);
         objControladorTCartaPizzaPrueba.inicializar();// Llamas al template method
     }
 

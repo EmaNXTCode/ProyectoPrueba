@@ -15,33 +15,33 @@ import java.awt.dnd.DropTargetListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Palabra;
-import vista.CartaPajaro;
+import vista.CartaCarro;
 import vista.MenuJuego;
-import vista.MenuTablero;
 
-public class ControladorCartaPajaroPrueba extends ControladorClaseDragDrop {
+public class ControladorCartaCarro extends ControladorClaseDragDrop {
 
-    private CartaPajaro objCartaPajaro;
+    private CartaCarro objCartaCarro;
 
-    public ControladorCartaPajaroPrueba(CartaPajaro objCartaPajaro) {
-        this.objCartaPajaro = objCartaPajaro;
+    public ControladorCartaCarro(CartaCarro objCartaCarro) {
+        this.objCartaCarro = objCartaCarro;
     }
 
     @Override
     protected void cargarPalabraDelNivel() {
-        // getPalabras() devuelve una lista de objetos Palabra
+        //        Ahora getPalabras() Devuelve una lista de objetos de palabra
         List<Palabra> lista = modeloGuardaPalabras.getPalabras();
         if (!lista.isEmpty()) {
-            Palabra palabraActual = lista.get(8);
+            Palabra palabraActual = lista.get(3);
             String palabraCompleta = palabraActual.getPalabra();
             if (palabraCompleta.length() >= 2) {
                 String silabaCorrecta = palabraCompleta.substring(0, 2);
-                String complemento = palabraCompleta.substring(2, 6);
-                objCartaPajaro.jLabel4.setText(silabaCorrecta);
-                objCartaPajaro.jLabel6.setText(complemento);
-                // Sílabas falsas en otros JLabel
-                objCartaPajaro.jLabel2.setText("BE");
-                objCartaPajaro.jLabel3.setText("WI");
+                String complemento = palabraCompleta.substring(2, 5);
+                objCartaCarro.jLabel2.setText(silabaCorrecta);
+                objCartaCarro.jLabel6.setText(complemento);
+//                Silabas Falsas
+                objCartaCarro.jLabel3.setText("MU");
+                objCartaCarro.jLabel4.setText("FO");
+
             }
         } else {
             JOptionPane.showMessageDialog(null, "No se encontraron palabras en la base de datos.");
@@ -50,67 +50,63 @@ public class ControladorCartaPajaroPrueba extends ControladorClaseDragDrop {
 
     @Override
     protected void arrastrarSoltar() {
-        final String textoOriginal = objCartaPajaro.jLabel5.getText();
+        final String textoOriginal = objCartaCarro.jLabel5.getText();
         DragSource ds = new DragSource();
 
-        // Configurar arrastre para jLabel2
-        ds.createDefaultDragGestureRecognizer(objCartaPajaro.jLabel2, DnDConstants.ACTION_MOVE, new DragGestureListener() {
+        // Configurar arrastre para jlabel2
+        ds.createDefaultDragGestureRecognizer(objCartaCarro.jLabel2, DnDConstants.ACTION_MOVE, new DragGestureListener() {
             @Override
             public void dragGestureRecognized(DragGestureEvent dge) {
-                Transferable objTransferible = new StringSelection(objCartaPajaro.jLabel2.getText());
+                Transferable objTransferible = new StringSelection(objCartaCarro.jLabel2.getText());
                 ds.startDrag(dge, DragSource.DefaultMoveDrop, objTransferible, null);
             }
         });
 
         // Configurar arrastre para jLabel3
-        ds.createDefaultDragGestureRecognizer(objCartaPajaro.jLabel3, DnDConstants.ACTION_MOVE, new DragGestureListener() {
+        ds.createDefaultDragGestureRecognizer(objCartaCarro.jLabel3, DnDConstants.ACTION_MOVE, new DragGestureListener() {
             @Override
             public void dragGestureRecognized(DragGestureEvent dge) {
-                Transferable objTransferible = new StringSelection(objCartaPajaro.jLabel3.getText());
+                Transferable objTransferible = new StringSelection(objCartaCarro.jLabel3.getText());
                 ds.startDrag(dge, DragSource.DefaultMoveDrop, objTransferible, null);
             }
         });
 
         // Configurar arrastre para jLabel4
-        ds.createDefaultDragGestureRecognizer(objCartaPajaro.jLabel4, DnDConstants.ACTION_MOVE, new DragGestureListener() {
+        ds.createDefaultDragGestureRecognizer(objCartaCarro.jLabel4, DnDConstants.ACTION_MOVE, new DragGestureListener() {
             @Override
             public void dragGestureRecognized(DragGestureEvent dge) {
-                Transferable objTransferible = new StringSelection(objCartaPajaro.jLabel4.getText());
+                Transferable objTransferible = new StringSelection(objCartaCarro.jLabel4.getText());
                 ds.startDrag(dge, DragSource.DefaultMoveDrop, objTransferible, null);
             }
         });
 
-        // Configurar jLabel3 como zona de drop
-        new DropTarget(objCartaPajaro.jLabel5, new DropTargetListener() {
+        // Configurar Jlabel5 como receptor o drop
+        new DropTarget(objCartaCarro.jLabel5, new DropTargetListener() {
             @Override
-            public void dragEnter(DropTargetDragEvent dtde) {
-            }
+            public void dragEnter(DropTargetDragEvent dtde) {}           
 
             @Override
-            public void dragOver(DropTargetDragEvent dtde) {
-            }
+            public void dragOver(DropTargetDragEvent dtde) {}
+            
+            @Override
+            public void dropActionChanged(DropTargetDragEvent dtde) {}
 
             @Override
-            public void dropActionChanged(DropTargetDragEvent dtde) {
-            }
-
-            @Override
-            public void dragExit(DropTargetEvent dte) {
-            }
-
+            public void dragExit(DropTargetEvent dte) {}
+            
             @Override
             public void drop(DropTargetDropEvent dtde) {
                 try {
                     dtde.acceptDrop(DnDConstants.ACTION_MOVE);
                     Transferable transferable = dtde.getTransferable();
                     String droppedText = (String) transferable.getTransferData(DataFlavor.stringFlavor);
-                    objCartaPajaro.jLabel5.setText(droppedText);
-                    if ((droppedText + objCartaPajaro.jLabel6.getText()).equals("PAJARO")) {
-                        objAudio.reproducirAudio("pajaro");
-                        JOptionPane.showMessageDialog(null, "Correcto!, la palabra es PAJARO");
+                    objCartaCarro.jLabel5.setText(droppedText);
+                    if ((droppedText + objCartaCarro.jLabel6.getText()).equals("CARRO")) {
+                        objAudio.reproducirAudio("carro");
+                        JOptionPane.showMessageDialog(null, "¡Correcto! La palabra es CARRO");
                     } else {
                         JOptionPane.showMessageDialog(null, "Incorrecto, intenta de nuevo");
-                        objCartaPajaro.jLabel5.setText(textoOriginal);
+                        objCartaCarro.jLabel5.setText(textoOriginal);
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -121,16 +117,16 @@ public class ControladorCartaPajaroPrueba extends ControladorClaseDragDrop {
 
     @Override
     protected void manejarEvento(Object boton) {
-          if (boton == this.objCartaPajaro.jButton1) {
+        if (boton == this.objCartaCarro.jButton1) {
             MenuJuego objMenuJuego = new MenuJuego();
             objMenuJuego.setVisible(true);
-            this.objCartaPajaro.dispose();
+            this.objCartaCarro.dispose();
         }
     }
 
     @Override
     protected void agregarAccionadorEventos() {
-       this.objCartaPajaro.jButton1.addActionListener(this);
+        this.objCartaCarro.jButton1.addActionListener(this);
     }
 
 }

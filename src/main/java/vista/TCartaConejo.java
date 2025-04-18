@@ -4,7 +4,7 @@
  */
 package vista;
 
-import controlador.ControladorTCartaConejoPrueba;
+import controlador.ControladorTCartaConejo;
 
 /**
  *
@@ -15,11 +15,11 @@ public class TCartaConejo extends javax.swing.JFrame {
     /**
      * Creates new form TCartaConejo
      */
-    ControladorTCartaConejoPrueba objControladorTCartaConejoPrueba;
+    ControladorTCartaConejo objControladorTCartaConejoPrueba;
     public TCartaConejo() {
         initComponents();
         this.setLocationRelativeTo(null);
-        objControladorTCartaConejoPrueba = new ControladorTCartaConejoPrueba(this);
+        objControladorTCartaConejoPrueba = new ControladorTCartaConejo(this);
         objControladorTCartaConejoPrueba.inicializar(); // Llamatos a templete method
         
     }

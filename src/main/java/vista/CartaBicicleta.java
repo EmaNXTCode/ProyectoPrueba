@@ -5,7 +5,7 @@
 package vista;
 
 import controlador.ControladorAudios;
-import controlador.ControladorCartaBicicletaPrueba;
+import controlador.ControladorCartaBicicleta;
 
 /**
  *
@@ -17,13 +17,13 @@ public class CartaBicicleta extends javax.swing.JFrame {
      * Creates new form Carta
      */
     ControladorAudios objAudio;
-    ControladorCartaBicicletaPrueba objControladorCartaBicicletaPrueba;
+    ControladorCartaBicicleta objControladorCartaBicicletaPrueba;
 
     public CartaBicicleta() {
         initComponents();
         this.setLocationRelativeTo(null);
         objAudio = new ControladorAudios();
-        objControladorCartaBicicletaPrueba = new ControladorCartaBicicletaPrueba(this);
+        objControladorCartaBicicletaPrueba = new ControladorCartaBicicleta(this);
         objControladorCartaBicicletaPrueba.inicializar(); // Patron Template method
     }
 

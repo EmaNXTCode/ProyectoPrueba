@@ -4,7 +4,7 @@
  */
 package vista;
 
-import controlador.ControladorTCartaCamaPrueba;
+import controlador.ControladorTCartaCama;
 
 /**
  *
@@ -15,12 +15,12 @@ public class TCartaCama extends javax.swing.JFrame {
     /**
      * Creates new form TCartaCama
      */
-    ControladorTCartaCamaPrueba objControladorTCartaCamaPrueba;
+    ControladorTCartaCama objControladorTCartaCamaPrueba;
 
     public TCartaCama() {
         initComponents();
         this.setLocationRelativeTo(null);
-        objControladorTCartaCamaPrueba = new ControladorTCartaCamaPrueba(this);
+        objControladorTCartaCamaPrueba = new ControladorTCartaCama(this);
         objControladorTCartaCamaPrueba.inicializar(); // Llamas al template method
     }
 

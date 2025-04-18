@@ -5,7 +5,7 @@
 package vista;
 
 import controlador.ControladorAudios;
-import controlador.ControladorCartaMangoPrueba;
+import controlador.ControladorCartaMango;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -16,13 +16,13 @@ import javax.sound.sampled.Clip;
  */
 public class CartaMango extends javax.swing.JFrame {
 
-    ControladorCartaMangoPrueba objControladorCartaMangoPrueba;
+    ControladorCartaMango objControladorCartaMangoPrueba;
     ControladorAudios objControladorAudios;
 
     public CartaMango() {
         initComponents();
         this.setLocationRelativeTo(null);
-        objControladorCartaMangoPrueba = new ControladorCartaMangoPrueba(this);
+        objControladorCartaMangoPrueba = new ControladorCartaMango(this);
         objControladorCartaMangoPrueba.inicializar();
         objControladorAudios = new ControladorAudios();
     }

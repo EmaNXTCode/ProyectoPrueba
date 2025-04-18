@@ -4,7 +4,7 @@
  */
 package vista;
 
-import controlador.ControladorTCartaPerroPrueba;
+import controlador.ControladorTCartaPerro;
 
 /**
  *
@@ -15,12 +15,12 @@ public class TCartaPerro extends javax.swing.JFrame {
     /**
      * Creates new form TCartaPerro
      */
-    ControladorTCartaPerroPrueba objContraladorTCartaPerroPrueba;
+    ControladorTCartaPerro objContraladorTCartaPerroPrueba;
 
     public TCartaPerro() {
         initComponents();
         this.setLocationRelativeTo(null);
-        objContraladorTCartaPerroPrueba = new ControladorTCartaPerroPrueba(this);
+        objContraladorTCartaPerroPrueba = new ControladorTCartaPerro(this);
         objContraladorTCartaPerroPrueba.inicializar();
     }
 

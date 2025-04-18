@@ -10,11 +10,11 @@ import vista.TCartaCama;
  *
  * @author ep712
  */
-public class ControladorTCartaCamaPrueba extends ControladorClaseBase {
+public class ControladorTCartaCama extends ControladorClaseBase {
 
     private TCartaCama objTCartaCama;
 
-    public ControladorTCartaCamaPrueba(TCartaCama objTCartaCama) {
+    public ControladorTCartaCama(TCartaCama objTCartaCama) {
         this.objTCartaCama = objTCartaCama;
     }
 

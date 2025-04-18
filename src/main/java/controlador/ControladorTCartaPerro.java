@@ -6,11 +6,11 @@ import modelo.Palabra;
 import vista.MenuTablero;
 import vista.TCartaPerro;
 
-public class ControladorTCartaPerroPrueba extends ControladorClaseBase {
+public class ControladorTCartaPerro extends ControladorClaseBase {
 
     private TCartaPerro objTCartaPerro;
 
-    public ControladorTCartaPerroPrueba(TCartaPerro objTCartaPerro) {
+    public ControladorTCartaPerro(TCartaPerro objTCartaPerro) {
         this.objTCartaPerro = objTCartaPerro;
     }
 

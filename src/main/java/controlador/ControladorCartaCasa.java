@@ -18,11 +18,11 @@ import modelo.Palabra;
 import vista.CartaCasa;
 import vista.MenuJuego;
 
-public class ControladorCartaCasaPrueba extends ControladorClaseDragDrop {
+public class ControladorCartaCasa extends ControladorClaseDragDrop {
 
     private CartaCasa objCartaCasa;
 
-    public ControladorCartaCasaPrueba(CartaCasa objCartaCasa) {
+    public ControladorCartaCasa(CartaCasa objCartaCasa) {
         this.objCartaCasa = objCartaCasa;
     }
 

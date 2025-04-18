@@ -4,7 +4,7 @@
  */
 package vista;
 
-import controlador.ControladorTCartaFocoPrueba;
+import controlador.ControladorTCartaFoco;
 
 /**
  *
@@ -15,12 +15,12 @@ public class TCartaFoco extends javax.swing.JFrame {
     /**
      * Creates new form TCartaFoco
      */
-    ControladorTCartaFocoPrueba objControladorTCartaFocoPrueba;
+    ControladorTCartaFoco objControladorTCartaFocoPrueba;
 
     public TCartaFoco() {
         initComponents();
         this.setLocationRelativeTo(null);
-        objControladorTCartaFocoPrueba = new ControladorTCartaFocoPrueba(this);
+        objControladorTCartaFocoPrueba = new ControladorTCartaFoco(this);
         objControladorTCartaFocoPrueba.inicializar(); // Template method
     }
 
